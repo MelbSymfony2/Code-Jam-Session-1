@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+
+{% block userBar %}{% endblock %}
+
+{% block title %}User Register{% endblock %}
+
+{% block body %}
+
+
+<h1>User Register</h1>
+<form action="#" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit"/>
+</form>
+{% endblock %}

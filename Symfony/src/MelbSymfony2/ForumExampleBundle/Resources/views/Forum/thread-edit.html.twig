@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}New Thread{% endblock %}
+
+{% block body %}
+ 
+ 
+<h1>New Thread</h1>
+<form action="#" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit"/>
+</form>
+{% endblock %}
