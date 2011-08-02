@@ -7,6 +7,7 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        {% block userBar %}{% render "MelbSymfony2ForumExampleBundle:Security:userBar" %}{% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

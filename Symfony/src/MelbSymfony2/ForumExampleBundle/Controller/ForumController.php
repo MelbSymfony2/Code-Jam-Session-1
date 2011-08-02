@@ -43,6 +43,15 @@ class ForumController extends Controller
     }
 
     /**
+     * @Route("/thread/{threadId}/post/{postId}")
+     */
+    public function postViewAction($threadId, $postId)
+    {
+        return array();
+    }
+
+
+    /**
      * @Route("/thread-create", name="thread_create")
      * @Template("MelbSymfony2ForumExampleBundle:Forum:thread-edit.html.twig")
      */
@@ -61,7 +70,14 @@ class ForumController extends Controller
 
     private function threadEdit(Entity\Thread $thread = null)
     {
-        if(empty($thread)) $thread = new Entity\Thread();
+        if(empty($thread))
+        {
+            $thread = new Entity\Thread();
+        } elseif (!$thread->getUser()->equals($this->get('security.context')->getToken()->getUser()))
+        {
+            throw new BadCredentialsException('Not Autorised to edit');
+        }
+
         $form = $this->createFormBuilder($thread)
                 ->add('title', 'text')
                 ->add('body', 'textarea')
@@ -75,6 +91,12 @@ class ForumController extends Controller
                 // perform some action, such as save the object to the database
 
                 $entityManager = $this->getEntityManager();
+                $user = $thread->getUser();
+                if(empty($user)) {
+                    $user = $this->get('security.context')->getToken()->getUser();
+                }
+
+                $thread->setUser($user);
                 $entityManager->persist($thread);
                 $entityManager->flush();
 

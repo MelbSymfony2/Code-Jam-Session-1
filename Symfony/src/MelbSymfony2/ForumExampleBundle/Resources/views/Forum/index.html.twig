@@ -9,6 +9,7 @@
             <tr>
                 <th>Title<th>
                 <th>Date</th>
+                <th>User</th>
                 <th>Thread Count</th>
                 <th>Options</th>
             </tr>
@@ -16,6 +17,7 @@
             <tr>
                 <td><a href="{{ path ('thread_view', {'id' : thread.id}) }}">{{ thread.title }}</a><td>
                 <td>{{ thread.createdAt|date("d/m/Y") }}</td>
+                <td>{{ thread.user.name }}</td>
                 <td>{{ thread.postCount }}</td>
                 <td><a href="{{ path ('thread_edit', {'id' : thread.id}) }}">edit</a></td>
             </tr>

@@ -20,7 +20,7 @@ class ThreadRepository extends EntityRepository
 {
     public function findAll() {
         $em = $this->getEntityManager();
-        $query = $em->createQuery('SELECT thread, COUNT(posts.id) AS postCount FROM MelbSymfony2\ForumExampleBundle\Entity\Thread AS thread LEFT JOIN thread.posts AS posts GROUP BY thread.id');
+        $query = $em->createQuery('SELECT thread, user, COUNT(posts.id) AS postCount FROM MelbSymfony2\ForumExampleBundle\Entity\Thread AS thread JOIN thread.user AS user LEFT JOIN thread.posts AS posts GROUP BY thread.id');
         $results = $query->getResult();
 
         $threads = array();

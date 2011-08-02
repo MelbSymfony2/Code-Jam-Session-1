@@ -39,6 +39,11 @@ class Post
     private $body;
 
     /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
+     */
+    private $user;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Thread", inversedBy="posts")
      */
     private $thread;
@@ -78,6 +83,16 @@ class Post
         return $this->title;
     }
 
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
     public function setThread($thread)
     {
         $this->thread = $thread;
@@ -87,4 +102,6 @@ class Post
     {
         return $this->thread;
     }
+
+
 }

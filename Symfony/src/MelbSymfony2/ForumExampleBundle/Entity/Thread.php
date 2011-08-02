@@ -43,6 +43,11 @@ class Thread
     private $body;
 
     /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="threads")
+     */
+    private $user;
+
+    /**
      * @ORM\OneToMany(targetEntity="Post", mappedBy="thread")
      */
     public $posts;
@@ -98,6 +103,16 @@ class Thread
     public function getTitle()
     {
         return $this->title;
+    }
+
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    public function getUser()
+    {
+        return $this->user;
     }
 
     public function setPostCount($postCount)
