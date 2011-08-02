@@ -38,4 +38,9 @@ class Product
      */
     protected $description;
 
+    /**
+     * @ORM\Column
+     */
+    protected $code;
+
 }
