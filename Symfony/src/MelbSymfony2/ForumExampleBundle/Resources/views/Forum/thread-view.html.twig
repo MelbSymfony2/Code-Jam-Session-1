@@ -1,0 +1,31 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ thread.title }}{% endblock %}
+
+{% block body %}
+ 
+ 
+<h1>{{ thread.title }}</h1>
+<p>Posted by {{ thread.user.name }} at {{ thread.createdAt|date("d/m/Y") }}</p>
+<p>{{ thread.body }}</p>
+<h2>Posts</h2>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Body</th>
+    </tr>
+    {% for post in thread.posts %}
+    <tr>
+        <td>{{ post.title }}</td>
+        <td>{{ post.body }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div>
+    <a href="{{ path('forum_default') }}">Back</a>
+</div>
+
+
+{% endblock %}
