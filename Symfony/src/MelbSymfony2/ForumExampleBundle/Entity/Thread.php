@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  *
  * @author camm
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MelbSymfony2\ForumExampleBundle\Entity\Repository\ThreadRepository")
  * @ORM\Table(name="thread");
  */
 class Thread 
@@ -44,6 +44,7 @@ class Thread
      */
     public $posts;
 
+    private $postCount;
 
     public function __construct()
     {
@@ -96,4 +97,23 @@ class Thread
         return $this->title;
     }
 
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    public function setPostCount($postCount)
+    {
+        $this->postCount = $postCount;
+    }
+
+    public function getPostCount()
+    {
+        return $this->postCount;
+    }
 }

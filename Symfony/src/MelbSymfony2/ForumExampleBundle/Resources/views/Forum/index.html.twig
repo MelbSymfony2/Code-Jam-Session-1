@@ -8,11 +8,13 @@
             <tr>
                 <th>Title<th>
                 <th>Date</th>
+                <th>Thread Count</th>
             </tr>
             {% for thread in threads %}
             <tr>
                 <td><a href="{{ path ('thread_view', {'id' : thread.id}) }}">{{ thread.title }}</a><td>
                 <td>{{ thread.createdAt|date("d/m/Y") }}</td>
+                <td>{{ thread.postCount }}</td>
             </tr>
             {% endfor %}
         </table>
