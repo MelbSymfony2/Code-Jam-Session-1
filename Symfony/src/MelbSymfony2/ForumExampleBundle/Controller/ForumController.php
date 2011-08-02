@@ -42,11 +42,4 @@ class ForumController extends Controller
         return array('thread' => $thread);
     }
 
-    /**
-     * @Route("/thread/{threadId}/post/{postId}")
-     */
-    public function postViewAction($threadId, $postId)
-    {
-        return array();
-    }
 }
