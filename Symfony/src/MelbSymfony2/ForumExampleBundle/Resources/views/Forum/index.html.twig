@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Forum Threads{% endblock %}
+
+{% block body %}
+        <h1>Threads</h1>
+        <table>
+            <tr>
+                <th>Title<th>
+                <th>Date</th>
+            </tr>
+            {% for thread in threads %}
+            <tr>
+                <td><a href="{{ path ('thread_view', {'id' : thread.id}) }}">{{ thread.title }}</a><td>
+                <td>{{ thread.createdAt|date("d/m/Y") }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+{% endblock %}
