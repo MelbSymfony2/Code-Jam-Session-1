@@ -7,6 +7,7 @@
 namespace MelbSymfony2\ForumExampleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  *
@@ -25,6 +26,7 @@ class Thread
 
     /**
      * @ORM\Column
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -36,6 +38,7 @@ class Thread
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $body;
 
@@ -95,16 +98,6 @@ class Thread
     public function getTitle()
     {
         return $this->title;
-    }
-
-    public function setUser($user)
-    {
-        $this->user = $user;
-    }
-
-    public function getUser()
-    {
-        return $this->user;
     }
 
     public function setPostCount($postCount)
